@@ -1,7 +1,4 @@
 function varargout = gui_monye(varargin)
-<<<<<<< HEAD
-
-=======
 % GUI_MONYE MATLAB code for gui_monye.fig
 %      GUI_MONYE, by itself, creates a new GUI_MONYE or raises the existing
 %      singleton*.
@@ -25,10 +22,9 @@ function varargout = gui_monye(varargin)
 
 % Edit the above text to modify the response to help gui_monye
 
-% Last Modified by GUIDE v2.5 25-Feb-2023 16:23:50
+% Last Modified by GUIDE v2.5 27-Feb-2023 15:34:25
 
 % Begin initialization code - DO NOT EDIT
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
@@ -46,11 +42,7 @@ else
     gui_mainfcn(gui_State, varargin{:});
 end
 % End initialization code - DO NOT EDIT
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
 
 % --- Executes just before gui_monye is made visible.
 function gui_monye_OpeningFcn(hObject, eventdata, handles, varargin)
@@ -65,6 +57,13 @@ handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
+
+
+
+set(handles.edit_box, 'String', '0');
+% Set the initial value of the edit box
+set(handles.edit_box2, 'String', '0');
+
 
 % UIWAIT makes gui_monye wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
@@ -97,6 +96,10 @@ function togglebutton2_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of togglebutton2
+
+% Set the string as the text of the uicontrol
+set(handles.edit_box, 'String', value_str);
+
 
 
 % --- Executes on button press in togglebutton3.
@@ -164,26 +167,38 @@ width = max(x) - min(x);
 height = max(y) - min(y);
 
 % Convert to cm
-<<<<<<< HEAD
-conversion_factor = 2.54/96;
-=======
 conversion_factor = 2.54 / 96;
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
 width_cm = width * conversion_factor;
 height_cm = height * conversion_factor;
+
+width_new = sprintf('%.2f', width_cm);
+height_new = sprintf('%.2f', height_cm);
+
+
 
 % Display the output
 axes(handles.axes2);
 imshow(a);
 hold on;
 plot(x, y, 'LineWidth', 2, 'Color', 'r');
-<<<<<<< HEAD
-text(min(x), min(y), sprintf('Width: %.2f cm\nHeight: %.2f cm', width_cm, height_cm), ...
-=======
-text(min(x), min(y), sprintf('Width: %.2f cm\nHeight: %.2f cm', width, height), ...
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
-    'Color', 'r', 'VerticalAlignment', 'top', 'HorizontalAlignment', 'left', 'FontSize', 14);
+% text(min(x), min(y), sprintf('Width: %.2f cm\nHeight: %.2f cm', width_cm, height_cm), ...
+%     'Color', 'r', 'VerticalAlignment', 'top', 'HorizontalAlignment', 'left', 'FontSize', 14);
 hold off;
+
+% Get the current value of the edit box
+current_value = str2double(get(handles.edit_box, 'String'));
+
+% Update the value of the edit box
+new_value = width_new;
+set(handles.edit_box, 'String', num2str(new_value));
+
+% Get the current value of the edit box
+current_value = str2double(get(handles.edit_box, 'String'));
+
+% Update the value of the edit box
+new_value = height_new;
+set(handles.edit_box2, 'String', num2str(new_value));
+
 
         
    
@@ -215,15 +230,15 @@ function reset_btn_Callback(hObject, eventdata, handles)
 % hObject    handle to reset_btn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-<<<<<<< HEAD
+
 axes(handles.axes1);
 cla reset;
 axes(handles.axes2);
 cla reset;
-set(handles.edit3,0);
-set(handles.edit4,0);
-=======
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
+
+set(handles.edit_box,'string',num2str(0));
+set(handles.edit_box2,'string',num2str(0));
+
 
 
 % --- Executes on button press in exit_btn.
@@ -262,22 +277,28 @@ function browse_btn_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to browse_btn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-<<<<<<< HEAD
-
-
-
-function edit3_Callback(hObject, eventdata, handles)
-% hObject    handle to edit3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit3 as text
-%        str2double(get(hObject,'String')) returns contents of edit3 as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit3_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit3 (see GCBO)
+function edit_box_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_box (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+
+
+function edit_box2_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_box2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_box2 as text
+%        str2double(get(hObject,'String')) returns contents of edit_box2 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_box2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_box2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -289,18 +310,28 @@ end
 
 
 
-function edit4_Callback(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
+function edit_box_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_box (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Hints: get(hObject,'String') returns contents of edit4 as text
-%        str2double(get(hObject,'String')) returns contents of edit4 as a double
+% Hints: get(hObject,'String') returns contents of edit_box as text
+%        str2double(get(hObject,'String')) returns contents of edit_box as a double
+
+
+
+function edit5_Callback(hObject, eventdata, handles)
+% hObject    handle to edit5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit5 as text
+%        str2double(get(hObject,'String')) returns contents of edit5 as a double
 
 
 % --- Executes during object creation, after setting all properties.
-function edit4_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
+function edit5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit5 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
 
@@ -309,14 +340,3 @@ function edit4_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
-
-% --- Executes during object creation, after setting all properties.
-function axes1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to axes1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: place code in OpeningFcn to populate axes1
-=======
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
