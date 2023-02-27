@@ -1,5 +1,5 @@
 % Read input image
-I = imread('doct4.png');
+I = imread('document images/doc.jpg');
 
 % Convert image to grayscale
 Igray = rgb2gray(I);
