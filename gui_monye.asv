@@ -1,7 +1,4 @@
 function varargout = gui_monye(varargin)
-<<<<<<< HEAD
-
-=======
 % GUI_MONYE MATLAB code for gui_monye.fig
 %      GUI_MONYE, by itself, creates a new GUI_MONYE or raises the existing
 %      singleton*.
@@ -28,7 +25,6 @@ function varargout = gui_monye(varargin)
 % Last Modified by GUIDE v2.5 25-Feb-2023 16:23:50
 
 % Begin initialization code - DO NOT EDIT
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
@@ -46,11 +42,7 @@ else
     gui_mainfcn(gui_State, varargin{:});
 end
 % End initialization code - DO NOT EDIT
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
 
 % --- Executes just before gui_monye is made visible.
 function gui_monye_OpeningFcn(hObject, eventdata, handles, varargin)
@@ -140,7 +132,7 @@ function check_btn_Callback(hObject, eventdata, handles)
 
 
 % Convert image to grayscale
-Igray = rgb2gray(a);
+Igray = rgb2gray(I);
 
 % Threshold the image
 level = graythresh(Igray);
@@ -164,29 +156,20 @@ width = max(x) - min(x);
 height = max(y) - min(y);
 
 % Convert to cm
-<<<<<<< HEAD
-conversion_factor = 2.54/96;
-=======
 conversion_factor = 2.54 / 96;
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
 width_cm = width * conversion_factor;
 height_cm = height * conversion_factor;
 
 % Display the output
-axes(handles.axes2);
-imshow(a);
+imshow(I);
 hold on;
 plot(x, y, 'LineWidth', 2, 'Color', 'r');
-<<<<<<< HEAD
-text(min(x), min(y), sprintf('Width: %.2f cm\nHeight: %.2f cm', width_cm, height_cm), ...
-=======
 text(min(x), min(y), sprintf('Width: %.2f cm\nHeight: %.2f cm', width, height), ...
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
     'Color', 'r', 'VerticalAlignment', 'top', 'HorizontalAlignment', 'left', 'FontSize', 14);
 hold off;
 
-        
-   
+        axes(handles.axes2);
+        imshow(k);
 
 function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
@@ -215,15 +198,6 @@ function reset_btn_Callback(hObject, eventdata, handles)
 % hObject    handle to reset_btn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-<<<<<<< HEAD
-axes(handles.axes1);
-cla reset;
-axes(handles.axes2);
-cla reset;
-set(handles.edit3,0);
-set(handles.edit4,0);
-=======
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
 
 
 % --- Executes on button press in exit_btn.
@@ -231,7 +205,6 @@ function exit_btn_Callback(hObject, eventdata, handles)
 % hObject    handle to exit_btn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-close(gcf);
 
 
 
@@ -262,61 +235,3 @@ function browse_btn_CreateFcn(hObject, eventdata, handles)
 % hObject    handle to browse_btn (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    empty - handles not created until after all CreateFcns called
-<<<<<<< HEAD
-
-
-
-function edit3_Callback(hObject, eventdata, handles)
-% hObject    handle to edit3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit3 as text
-%        str2double(get(hObject,'String')) returns contents of edit3 as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function edit3_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
-
-function edit4_Callback(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of edit4 as text
-%        str2double(get(hObject,'String')) returns contents of edit4 as a double
-
-
-% --- Executes during object creation, after setting all properties.
-function edit4_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to edit4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: edit controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
-% --- Executes during object creation, after setting all properties.
-function axes1_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to axes1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: place code in OpeningFcn to populate axes1
-=======
->>>>>>> 3450bdff7dca7236f8cd2d55f83da289a78498d3
